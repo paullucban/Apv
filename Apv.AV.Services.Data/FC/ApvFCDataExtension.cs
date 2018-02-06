@@ -10,8 +10,10 @@ namespace Apv.AV.Services.Data.FC
     {
         public static void EnsureSeedDataForContext(this ApvFCAppContext context)
         {
+            bool _doSave  = false;
             if (!context.Versions.Any())
             {
+                _doSave  = true;                
             // init seed data
                 var versions = new List<AppVersion>()
                 {
@@ -46,7 +48,151 @@ namespace Apv.AV.Services.Data.FC
                 };
                 context.Versions.AddRange(versions);            
             }
-            context.SaveChanges();
+            
+            if(!context.CarModelClasses.Any())
+            {
+                _doSave = true;
+              var  carModelClasses = new List<CarModelClass>()
+              {
+                  new CarModelClass()
+                  {
+                    id=Guid.NewGuid().ToString(),
+                    countryCode = "SG",
+                    companyId = "1000",
+                    modelClassId ="100000",
+                    modelClassCode = "c117",
+                    modelClassBrand ="Volkswagen",
+                    modelClassLabel ="Golf R",
+                    modelClassLabelLoc =string.Empty,
+                    modelClassTypeLabel ="Hatchback",
+                    modelClassTypeLabelLoc = string.Empty,
+                    CarModelClassImages = new 
+                            List<CarModelClassImage>()
+                                {new CarModelClassImage()
+                                    {
+                                        coverImage="car_golf_R.jpg",
+                                        thumbnailImage = "car_golf_R.jpg",
+                                        createdBy = "admin",
+                                        createdDt = DateTime.Now,
+                                        lastUpdatedBy = "admin",
+                                        lastUpdatedDt = DateTime.Now                               
+                                    }
+                                },
+                    order =1.0m,
+                    published = true,
+                    createdBy = "admin",
+                    createdDt = DateTime.Now,
+                    lastUpdatedBy = "admin",
+                    lastUpdatedDt = DateTime.Now
+                }, 
+                new CarModelClass()
+                    {
+                      id=Guid.NewGuid().ToString(),
+                      countryCode = "SG",
+                      companyId = "1000",
+                      modelClassId ="100001",
+                      modelClassCode = "c118",
+                      modelClassBrand ="Volkswagen",
+                      modelClassLabel ="Golf R",
+                      modelClassLabelLoc =string.Empty,
+                      modelClassTypeLabel ="Hatchback",
+                      modelClassTypeLabelLoc = string.Empty,
+                      CarModelClassImages = new 
+                            List<CarModelClassImage>()
+                                {new CarModelClassImage()
+                                    {
+                                        coverImage="car_golf_r.jpg",
+                                        thumbnailImage = "car_golf_r.jpg",
+                                        verticalImage="car_golf_r.jpg",
+                                        onlineImage = "car_golf_r.jpg",
+                                        createdBy = "admin",
+                                        createdDt = DateTime.Now,
+                                        lastUpdatedBy = "admin",
+                                        lastUpdatedDt = DateTime.Now                               
+                                    }
+                                },
+                    order =1.0m,
+                    published = true,
+                    createdBy = "admin",
+                    createdDt = DateTime.Now,
+                    lastUpdatedBy = "admin",
+                    lastUpdatedDt = DateTime.Now
+                    },
+                    new CarModelClass()
+                    {
+                      id=Guid.NewGuid().ToString(),
+                      countryCode = "AU",
+                      companyId = "2000",
+                      modelClassId ="200000",
+                      modelClassCode = "c119",
+                      modelClassBrand ="Volkswagen",
+                      modelClassLabel ="Golf R",
+                      modelClassLabelLoc =string.Empty,
+                      modelClassTypeLabel ="Hatchback",
+                      modelClassTypeLabelLoc = string.Empty,
+                      CarModelClassImages = new 
+                            List<CarModelClassImage>()
+                                {new CarModelClassImage()
+                                    {
+                                        coverImage="car_golf_r.jpg",
+                                        thumbnailImage = "car_golf_r.jpg",
+                                        verticalImage="car_golf_r.jpg",
+                                        onlineImage = "car_golf_r.jpg",
+                                        createdBy = "admin",
+                                        createdDt = DateTime.Now,
+                                        lastUpdatedBy = "admin",
+                                        lastUpdatedDt = DateTime.Now                               
+                                    }
+                                },
+                    order =1.0m,
+                    published = true,
+                    createdBy = "admin",
+                    createdDt = DateTime.Now,
+                    lastUpdatedBy = "admin",
+                    lastUpdatedDt = DateTime.Now
+                    },                    
+                    new CarModelClass()
+                    {
+                      id=Guid.NewGuid().ToString(),
+                      countryCode = "AU",
+                      companyId = "2000",
+                      modelClassId ="200001",
+                      modelClassCode = "c120",
+                      modelClassBrand ="Volkswagen",
+                      modelClassLabel ="Golf R",
+                      modelClassLabelLoc =string.Empty,
+                      modelClassTypeLabel ="Hatchback",
+                      modelClassTypeLabelLoc = string.Empty,
+                      CarModelClassImages = new 
+                            List<CarModelClassImage>()
+                                {new CarModelClassImage()
+                                    {
+                                        coverImage="car_golf_r.jpg",
+                                        thumbnailImage = "car_golf_r.jpg",
+                                        verticalImage="car_golf_r.jpg",
+                                        onlineImage = "car_golf_r.jpg",
+                                        createdBy = "admin",
+                                        createdDt = DateTime.Now,
+                                        lastUpdatedBy = "admin",
+                                        lastUpdatedDt = DateTime.Now                               
+                                    }
+                                },
+                    order =1.0m,
+                    published = true,
+                    createdBy = "admin",
+                    createdDt = DateTime.Now,
+                    lastUpdatedBy = "admin",
+                    lastUpdatedDt = DateTime.Now
+                    }
+              };
+
+            context.CarModelClasses.AddRange(carModelClasses);
+
+            }
+
+            if(_doSave)
+                context.SaveChanges();
+
         }
     }
 }

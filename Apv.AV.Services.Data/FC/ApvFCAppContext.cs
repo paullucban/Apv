@@ -16,9 +16,9 @@ namespace Apv.AV.Services.Data.FC
         }
 
         public DbSet<AppVersion> Versions{get;set;}
-
-
-
+        public DbSet<CarModelClass> CarModelClasses{get;set;}       
+        public DbSet<CarModel> CarModels{get;set;}       
+        public DbSet<FinancialProduct> FinancialProduct{get;set;}
 
     }
 }

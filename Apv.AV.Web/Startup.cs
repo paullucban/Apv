@@ -66,7 +66,7 @@ namespace Apv.AV.Web
             {
                 app.UseDeveloperExceptionPage();
             }
-            context.EnsureSeedDataForContext();
+            
             app.UseStatusCodePages();
             app.UseCors(builder =>
                 builder.WithOrigins("*"));
