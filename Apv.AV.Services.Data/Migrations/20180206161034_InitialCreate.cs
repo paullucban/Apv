@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Apv.AV.Services.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,55 @@ namespace Apv.AV.Services.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FinancialProduct",
+                name: "Companies",
+                columns: table => new
+                {
+                    companyId = table.Column<string>(maxLength: 10, nullable: false),
+                    companyCode = table.Column<string>(maxLength: 10, nullable: true),
+                    companyLogo = table.Column<string>(maxLength: 500, nullable: true),
+                    companyName = table.Column<string>(maxLength: 500, nullable: true),
+                    companyNameLoc = table.Column<string>(maxLength: 500, nullable: true),
+                    createdBy = table.Column<string>(maxLength: 30, nullable: true),
+                    createdDt = table.Column<DateTime>(nullable: false),
+                    email = table.Column<string>(maxLength: 500, nullable: true),
+                    fax = table.Column<string>(maxLength: 20, nullable: true),
+                    homePage = table.Column<string>(maxLength: 1000, nullable: true),
+                    lastUpdatedBy = table.Column<string>(maxLength: 30, nullable: true),
+                    lastUpdatedDt = table.Column<DateTime>(nullable: false),
+                    latitude = table.Column<string>(maxLength: 10, nullable: true),
+                    longtitude = table.Column<string>(maxLength: 10, nullable: true),
+                    mobile = table.Column<string>(maxLength: 20, nullable: true),
+                    phone = table.Column<string>(maxLength: 20, nullable: true),
+                    postalCode = table.Column<string>(maxLength: 10, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companies", x => x.companyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Countries",
+                columns: table => new
+                {
+                    countryCode = table.Column<string>(maxLength: 3, nullable: false),
+                    countryName = table.Column<string>(maxLength: 3, nullable: true),
+                    createdBy = table.Column<string>(maxLength: 30, nullable: true),
+                    createdDt = table.Column<DateTime>(nullable: false),
+                    currencySymbol = table.Column<string>(maxLength: 3, nullable: true),
+                    dateFormat = table.Column<string>(maxLength: 20, nullable: true),
+                    formatDisplayDecimalPlace = table.Column<int>(nullable: false),
+                    lastUpdatedBy = table.Column<string>(maxLength: 30, nullable: true),
+                    lastUpdatedDt = table.Column<DateTime>(nullable: false),
+                    roundingMethodForCalculation = table.Column<string>(maxLength: 20, nullable: true),
+                    timeZone = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Countries", x => x.countryCode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FinancialProducts",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -50,7 +98,7 @@ namespace Apv.AV.Services.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FinancialProduct", x => x.id);
+                    table.PrimaryKey("PK_FinancialProducts", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,6 +178,37 @@ namespace Apv.AV.Services.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CountryGlobalSettings",
+                columns: table => new
+                {
+                    id = table.Column<string>(maxLength: 36, nullable: false),
+                    companyId = table.Column<string>(nullable: true),
+                    countryCode = table.Column<string>(nullable: true),
+                    createdBy = table.Column<string>(maxLength: 30, nullable: true),
+                    createdDt = table.Column<DateTime>(nullable: false),
+                    lastUpdatedBy = table.Column<string>(maxLength: 30, nullable: true),
+                    lastUpdatedDt = table.Column<DateTime>(nullable: false),
+                    maintenanceMessage = table.Column<string>(nullable: true),
+                    maintenanceMode = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CountryGlobalSettings", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_CountryGlobalSettings_Companies_companyId",
+                        column: x => x.companyId,
+                        principalTable: "Companies",
+                        principalColumn: "companyId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CountryGlobalSettings_Countries_countryCode",
+                        column: x => x.countryCode,
+                        principalTable: "Countries",
+                        principalColumn: "countryCode",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CarModelFinancialProduct",
                 columns: table => new
                 {
@@ -152,9 +231,9 @@ namespace Apv.AV.Services.Data.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_CarModelFinancialProduct_FinancialProduct_financialProductid",
+                        name: "FK_CarModelFinancialProduct_FinancialProducts_financialProductid",
                         column: x => x.financialProductid,
-                        principalTable: "FinancialProduct",
+                        principalTable: "FinancialProducts",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -165,7 +244,7 @@ namespace Apv.AV.Services.Data.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    carModelid = table.Column<string>(nullable: true),
+                    CarModelid = table.Column<string>(nullable: true),
                     companyId = table.Column<string>(nullable: true),
                     createdBy = table.Column<string>(nullable: true),
                     createdDt = table.Column<DateTime>(nullable: false),
@@ -177,8 +256,8 @@ namespace Apv.AV.Services.Data.Migrations
                 {
                     table.PrimaryKey("PK_CarPrice", x => x.id);
                     table.ForeignKey(
-                        name: "FK_CarPrice_CarModels_carModelid",
-                        column: x => x.carModelid,
+                        name: "FK_CarPrice_CarModels_CarModelid",
+                        column: x => x.CarModelid,
                         principalTable: "CarModels",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -205,9 +284,19 @@ namespace Apv.AV.Services.Data.Migrations
                 column: "carModelClassid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarPrice_carModelid",
+                name: "IX_CarPrice_CarModelid",
                 table: "CarPrice",
-                column: "carModelid");
+                column: "CarModelid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CountryGlobalSettings_companyId",
+                table: "CountryGlobalSettings",
+                column: "companyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CountryGlobalSettings_countryCode",
+                table: "CountryGlobalSettings",
+                column: "countryCode");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -222,13 +311,22 @@ namespace Apv.AV.Services.Data.Migrations
                 name: "CarPrice");
 
             migrationBuilder.DropTable(
+                name: "CountryGlobalSettings");
+
+            migrationBuilder.DropTable(
                 name: "Versions");
 
             migrationBuilder.DropTable(
-                name: "FinancialProduct");
+                name: "FinancialProducts");
 
             migrationBuilder.DropTable(
                 name: "CarModels");
+
+            migrationBuilder.DropTable(
+                name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Countries");
 
             migrationBuilder.DropTable(
                 name: "CarModelClasses");

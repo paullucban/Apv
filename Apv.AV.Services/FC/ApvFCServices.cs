@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Apv.AV.Services.Data.FC;
 using Apv.AV.Services.Data.Models.FC;
+using Apv.AV.Services.DTO.FC;
 
 namespace Apv.AV.Services.FC
 {
@@ -23,5 +24,7 @@ namespace Apv.AV.Services.FC
         {
             return _repo.getAppVersion(platform);
         }
+
+
     }
 }

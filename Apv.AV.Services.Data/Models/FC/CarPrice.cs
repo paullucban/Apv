@@ -6,7 +6,6 @@ namespace Apv.AV.Services.Data.Models.FC
     public class CarPrice
     {
         public int id { get; set; }
-        public CarModel carModel { get; set; }
         public string companyId { get; set; }
         public decimal price { get; set; }
         public string createdBy { get; set; }

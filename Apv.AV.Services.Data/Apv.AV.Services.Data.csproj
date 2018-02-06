@@ -15,5 +15,10 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Models\Shared\" />
+    <Folder Include="Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="DTO\FC\IDto.cs" />
   </ItemGroup>
 </Project>

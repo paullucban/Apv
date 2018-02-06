@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Apv.AV.Services.Data.Models.FC
+namespace Apv.AV.Services.DTO.FC
 {
-    public class CarModelClass
+    public class CarModelClassDto
     {
         public string id { get; set; }
         public string countryCode { get; set; }
@@ -16,13 +16,9 @@ namespace Apv.AV.Services.Data.Models.FC
         public string modelClassLabelLoc { get; set; }
         public string modelClassTypeLabel { get; set; }
         public string modelClassTypeLabelLoc { get; set; }
-        public List<CarModelClassImage> carModelClassImages {get;set;}
+        public List<CarModelClassImageDto> carModelClassImages {get;set;}
         public decimal order { get; set; }
         public bool published { get; set; }
-        public string createdBy { get; set; }
-        public DateTime createdDt { get; set; }
-        public string lastUpdatedBy {get;set;}
-        public DateTime lastUpdatedDt { get; set; }
 
     }
 }

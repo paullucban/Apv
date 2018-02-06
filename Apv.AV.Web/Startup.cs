@@ -8,8 +8,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Apv.AV.Services.Data;
 using Apv.AV.Services.Data.FC;
+using Apv.AV.Services.Data.Shared;
 using Apv.AV.Services.FC;
+using Apv.AV.Services.Shared;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json.Serialization;
@@ -51,16 +55,20 @@ namespace Apv.AV.Web
             //});
 
             var connectionString = Startup.Configuration["connectionStrings:ApvConnection"];
-            services.AddDbContext<ApvFCAppContext>(o => o.UseSqlServer(connectionString));
+            services.AddDbContext<ApvAppContext>(o => o.UseSqlServer(connectionString));
+
             services.AddScoped<IApvFCRepository, ApvFCRepository>();
+            services.AddScoped<IApvSharedRepository, ApvSharedRepository>();
+
             services.AddTransient<IApvFCServices, ApvFCServices>();
+            services.AddTransient<IApvSharedServices, ApvSharedServices>();
 
         }
 
         // This methodc gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, 
                               IHostingEnvironment env, 
-                              ApvFCAppContext context)
+                              ApvAppContext context)
         {
             if (env.IsDevelopment())
             {

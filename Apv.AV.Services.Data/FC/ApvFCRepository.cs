@@ -11,9 +11,9 @@ namespace Apv.AV.Services.Data.FC
     public class ApvFCRepository : IApvFCRepository
     {
 
-        ApvFCAppContext _context;
+        ApvAppContext _context;
 
-        public ApvFCRepository(ApvFCAppContext context)
+        public ApvFCRepository(ApvAppContext context)
         {
             _context = context;
         }

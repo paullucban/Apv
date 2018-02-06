@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Apv.AV.Services.Data.FC
+namespace Apv.AV.Services.Data
 {
-    public static class ApvFCDataExtension
+    public static class ApvDataExtension
     {
-        public static void EnsureSeedDataForContext(this ApvFCAppContext context)
+        public static void EnsureSeedDataForContext(this ApvAppContext context)
         {
             bool _doSave  = false;
             if (!context.Versions.Any())
@@ -66,7 +66,7 @@ namespace Apv.AV.Services.Data.FC
                     modelClassLabelLoc =string.Empty,
                     modelClassTypeLabel ="Hatchback",
                     modelClassTypeLabelLoc = string.Empty,
-                    CarModelClassImages = new 
+                    carModelClassImages = new 
                             List<CarModelClassImage>()
                                 {new CarModelClassImage()
                                     {
@@ -97,7 +97,7 @@ namespace Apv.AV.Services.Data.FC
                       modelClassLabelLoc =string.Empty,
                       modelClassTypeLabel ="Hatchback",
                       modelClassTypeLabelLoc = string.Empty,
-                      CarModelClassImages = new 
+                      carModelClassImages = new 
                             List<CarModelClassImage>()
                                 {new CarModelClassImage()
                                     {
@@ -130,7 +130,7 @@ namespace Apv.AV.Services.Data.FC
                       modelClassLabelLoc =string.Empty,
                       modelClassTypeLabel ="Hatchback",
                       modelClassTypeLabelLoc = string.Empty,
-                      CarModelClassImages = new 
+                      carModelClassImages = new 
                             List<CarModelClassImage>()
                                 {new CarModelClassImage()
                                     {
@@ -163,7 +163,7 @@ namespace Apv.AV.Services.Data.FC
                       modelClassLabelLoc =string.Empty,
                       modelClassTypeLabel ="Hatchback",
                       modelClassTypeLabelLoc = string.Empty,
-                      CarModelClassImages = new 
+                      carModelClassImages = new 
                             List<CarModelClassImage>()
                                 {new CarModelClassImage()
                                     {

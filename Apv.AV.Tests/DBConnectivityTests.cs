@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Xunit;
-using Apv.AV.Services.Data.FC;
+using Apv.AV.Services.Data;
 using Microsoft.EntityFrameworkCore; 
 
 namespace Apv.AV.Tests
@@ -18,10 +18,10 @@ namespace Apv.AV.Tests
         public void ConnectToDB()
         {
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApvFCAppContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<ApvAppContext>();
             optionsBuilder.UseSqlServer("Data Source=localhost;User Id=sa;Password=p@ssw0rd; Initial Catalog=apvDB");
 
-            using (var context = new ApvFCAppContext(optionsBuilder.Options))
+            using (var context = new ApvAppContext(optionsBuilder.Options))
             {
                 context.Database.Migrate();
                 context.EnsureSeedDataForContext();

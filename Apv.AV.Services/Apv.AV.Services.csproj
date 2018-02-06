@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="FC\" />
+    <Folder Include="DTO\" />
+    <Folder Include="Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Apv.AV.Services.Data\Apv.AV.Services.Data.csproj" />
