@@ -7,8 +7,7 @@ using Apv.AV.Services.FC;
 
 namespace Apv.AV.Web.Controllers
 {
-
-    [Route("api/[controller]")]
+    
     public class FCController:Controller
     {
         private IApvFCServices _iApvService;
@@ -19,7 +18,7 @@ namespace Apv.AV.Web.Controllers
         }
 
         // GET api/FC/Versions
-        [HttpGet("/Versions")]
+        [HttpGet("api/[controller]/versions")]
         public IActionResult getAllAppVersions()
         {
             return Ok(_iApvService.getAllAppVersions());   

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Xunit;
 using Apv.AV.Services.Data.FC;
 using Microsoft.EntityFrameworkCore; 
@@ -6,7 +7,13 @@ using Microsoft.EntityFrameworkCore;
 namespace Apv.AV.Tests
 {
     public class DBConnectivityTests
+
     {
+        public DBConnectivityTests()
+        {
+            
+        }
+        
         [Fact]
         public void ConnectToDB()
         {
@@ -18,11 +25,10 @@ namespace Apv.AV.Tests
             {
                 context.Database.Migrate();
                 context.EnsureSeedDataForContext();
+                var lst = context.Versions.ToList();
+                Console.Write(lst.Count.ToString());
                 // do stuff
-            }
-
-
-            
+            }                      
         }
     }
 }
