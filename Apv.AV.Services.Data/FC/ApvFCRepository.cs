@@ -18,12 +18,12 @@ namespace Apv.AV.Services.Data.FC
             _context = context;
         }
 
-        public AppVersion GetAppVersion(string platform)
+        public AppVersion getAppVersion(string platform)
         {
             return _context.Versions.Where(a => a.platform == platform).FirstOrDefault();
         }
 
-        public ICollection<AppVersion> GetAppVersions()
+        public ICollection<AppVersion> getAllAppVersions()
         {
             return _context.Versions.ToList();
         }

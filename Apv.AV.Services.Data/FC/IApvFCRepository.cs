@@ -6,7 +6,7 @@ namespace Apv.AV.Services.Data.FC
 {
     public interface IApvFCRepository
     {
-        ICollection<AppVersion> GetAppVersions();
-        AppVersion GetAppVersion(string platform);
+        ICollection<AppVersion> getAllAppVersions();
+        AppVersion getAppVersion(string platform);
     }
 }

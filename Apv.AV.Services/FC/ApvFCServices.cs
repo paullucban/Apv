@@ -16,12 +16,12 @@ namespace Apv.AV.Services.FC
 
         public ICollection<AppVersion> getAllAppVersions()
         {
-            return _repo.GetAppVersions();
+            return _repo.getAllAppVersions();
         }
 
         public AppVersion getAppVersion(string platform)
         {
-            return _repo.GetAppVersion(platform);
+            return _repo.getAppVersion(platform);
         }
     }
 }

@@ -8,34 +8,36 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
 using Apv.AV.Services.Data.FC;
 using Apv.AV.Services.FC;
-
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json.Serialization;
 //using NLog.Extensions.Logging;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Apv.AV.Web
 {
     public class Startup
     {
-
-
         public static IConfiguration Configuration { get; private set; }
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;         
         }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new Info { Title = "Auto-vantage APIs", Version = "v1" });
+                });
             services.AddMvc()
                 .AddMvcOptions(o => o.OutputFormatters.Add(
                     new XmlDataContractSerializerOutputFormatter()));
@@ -64,8 +66,18 @@ namespace Apv.AV.Web
             {
                 app.UseDeveloperExceptionPage();
             }
-            //context.EnsureSeedDataForContext();
+            context.EnsureSeedDataForContext();
             app.UseStatusCodePages();
+            app.UseCors(builder =>
+                builder.WithOrigins("*"));
+                // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
             app.UseMvc();
         }
     }
