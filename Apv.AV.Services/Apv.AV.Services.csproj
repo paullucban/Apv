@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="FC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Apv.AV.Services.Data\Apv.AV.Services.Data.csproj" />
+    <ProjectReference Include="..\Apv.AV.Common\Apv.AV.Common.csproj" />
+  </ItemGroup>
+</Project>
