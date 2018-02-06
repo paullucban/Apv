@@ -10,6 +10,13 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Apv.AV.Services.Data\Apv.AV.Services.Data.csproj" />
+    <ProjectReference Include="..\Apv.AV.Common\Apv.AV.Common.csproj" />
+    <ProjectReference Include="..\Apv.AV.Services\Apv.AV.Services.csproj" />
+    <ProjectReference Include="..\Apv.AV.Web\Apv.AV.Web.csproj" />
+  </ItemGroup>
 </Project>

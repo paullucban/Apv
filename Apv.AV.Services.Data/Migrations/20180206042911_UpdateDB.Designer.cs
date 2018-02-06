@@ -11,8 +11,8 @@ using System;
 namespace Apv.AV.Services.Data.Migrations
 {
     [DbContext(typeof(ApvFCAppContext))]
-    [Migration("20180205162551_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20180206042911_UpdateDB")]
+    partial class UpdateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

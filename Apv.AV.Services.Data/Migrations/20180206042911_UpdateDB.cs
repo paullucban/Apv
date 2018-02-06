@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Apv.AV.Services.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class UpdateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
