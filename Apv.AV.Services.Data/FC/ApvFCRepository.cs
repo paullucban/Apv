@@ -20,7 +20,7 @@ namespace Apv.AV.Services.Data.FC
 
         public AppVersion getAppVersion(string platform)
         {
-            return _context.Versions.Where(a => a.platform == platform).FirstOrDefault();
+            return _context.Versions.Where(a => a.platform == platform).FirstOrDefault();;
         }
 
         public ICollection<AppVersion> getAllAppVersions()
