@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Apv.AV.Services.Data.FC;
 using Apv.AV.Services.Data.Models.FC;
 using Apv.AV.Services.DTO.FC;
+using System.Linq;
 
 namespace Apv.AV.Services.FC
 {
@@ -25,6 +26,11 @@ namespace Apv.AV.Services.FC
             return _repo.getAppVersion(platform);
         }
 
+        public ICollection<CarModelDto> getCarModels(string countryCode, string companyId, string modelClassId, string carModelId)
+        {
+            return _repo.getCarModels(countryCode, companyId, modelClassId, carModelId).
+                        Select(a => a.ConvertModelDto()).ToList();
+        }
 
     }
 }

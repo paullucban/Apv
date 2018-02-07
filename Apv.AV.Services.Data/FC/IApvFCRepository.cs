@@ -8,5 +8,6 @@ namespace Apv.AV.Services.Data.FC
     {
         ICollection<AppVersion> getAllAppVersions();
         AppVersion getAppVersion(string platform);
+        ICollection<CarModel> getCarModels(string countryCode, string companyId, string modelClassId, string carModelId);
     }
 }

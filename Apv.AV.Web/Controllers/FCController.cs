@@ -39,5 +39,19 @@ namespace Apv.AV.Web.Controllers
             return Ok(_iApvService.getAppVersion(platform));
         }
 
+        /// <summary>
+        /// Gets the car models.
+        /// </summary>
+        /// <returns>The car models.</returns>
+        /// <param name="countryCode">Country code.</param>
+        /// <param name="companyId">Company identifier.</param>
+        /// <param name="modelClassId">Model class identifier.</param>
+        /// <param name="carModelId">Car model identifier.</param>
+        [HttpGet("api/[controller]/carmodels/{countryCode}/{companyId}/{modelClassId}/{carModelId}")]
+        public IActionResult getCarModels(string countryCode, string companyId, string modelClassId, string carModelId)
+        {
+            return Ok();     
+        }
+
     }
 }

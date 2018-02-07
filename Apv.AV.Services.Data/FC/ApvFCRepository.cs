@@ -27,5 +27,10 @@ namespace Apv.AV.Services.Data.FC
         {
             return _context.Versions.ToList();
         }
+
+        public ICollection<CarModel> getCarModels(string countryCode, string companyId, string modelClassId, string carModelId)
+        {
+            return _context.CarModels.ToList();
+        }
     }
 }
