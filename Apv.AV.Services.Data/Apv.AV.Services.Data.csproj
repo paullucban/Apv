@@ -21,4 +21,7 @@
   <ItemGroup>
     <Compile Remove="DTO\FC\IDto.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Apv.AV.Common\Apv.AV.Common.csproj" />
+  </ItemGroup>
 </Project>

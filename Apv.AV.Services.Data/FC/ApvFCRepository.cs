@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Apv.AV.Services.Data.Models.FC;
 using System.Linq;
-using Apv.AV.Services.Data.FC;
-using Microsoft.EntityFrameworkCore;
-
+//using Apv.AV.Services.Data.FC;
+//using Microsoft.EntityFrameworkCore;
+using Apv.AV.Common;
 
 namespace Apv.AV.Services.Data.FC
 {
@@ -32,5 +32,16 @@ namespace Apv.AV.Services.Data.FC
         {
             return _context.CarModels.ToList();
         }
+
+        public ICollection<FinancialProduct> getFinancialProductsByCarModel(string countryCode, string companyId, string carModelId)
+        {
+            return _context.FinancialProducts.
+                           Where(fp => 
+                                 fp.carModels.
+                                 Where(cm=>cm.carModel.carModelId==carModelId).Any()                                
+                                ).ToList();
+            
+        }
+
     }
 }

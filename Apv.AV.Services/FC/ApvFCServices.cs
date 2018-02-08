@@ -30,7 +30,21 @@ namespace Apv.AV.Services.FC
         public ICollection<CarModelDto> getCarModels(string countryCode, string companyId, string modelClassId, string carModelId)
         {
             return _repo.getCarModels(countryCode, companyId, modelClassId, carModelId).
-                        Select(a => a.ConvertModelDto()).ToList();
+                        Select(cm => new CarModelDto()
+                        {
+                            id = cm.id,
+                            carModelClass = cm.carModelClass.ConvertModelDto(),
+                            carModelId = cm.carModelId,
+                            modelLabel = cm.modelLabel,
+                            modelLabelLoc = cm.modelLabelLoc,
+                            published = cm.published,
+                            order = cm.order,
+                            coverImage = cm.coverImage,
+                            carPrices = cm.carPrices.Select(a => a.ConvertModelDto()).ToList(),
+                            financialProducts = _repo.getFinancialProductsByCarModel(countryCode, companyId, cm.carModelId).
+                                                            Select(a => a.ConvertModelDto()).ToList()
+                        }).ToList();
+
         }
 
     }

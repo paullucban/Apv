@@ -2,10 +2,12 @@
 using System.Linq;
 using Apv.AV.Services.Data.Models.FC;
 
+
 namespace Apv.AV.Services.DTO.FC
 {
     public static class DataModelEntensions
     {
+        /*
         public static CarModelDto ConvertModelDto(this CarModel source)
         {
             return new CarModelDto()
@@ -19,10 +21,10 @@ namespace Apv.AV.Services.DTO.FC
                 order = source.order,
                 coverImage = source.coverImage,
                 carPrices = source.carPrices.Select(a => a.ConvertModelDto()).ToList(),
-                financialProducts = source.financialProducts.Select(a=>a.ConvertModelDto()).ToList()
+                financialProducts =   source.financialProducts.Select(a=>a.ConvertModelDto()).ToList()
             };
         }
-
+        */
         public static CarModelClassDto ConvertModelDto(this CarModelClass source)
         {
             return new CarModelClassDto()
@@ -50,13 +52,13 @@ namespace Apv.AV.Services.DTO.FC
             };
         }
 
-        public static FinancialProductDto ConvertModelDto(this CarModelFinancialProduct source)
+        public static FinancialProductDto ConvertModelDto(this FinancialProduct source)
         {
             return new FinancialProductDto() 
             { 
-                id = source.financialProduct.id,
-                name = source.financialProduct.name,
-                description = source.financialProduct.description
+                id = source.id,
+                name = source.name,
+                description = source.description
             };
         }
 
