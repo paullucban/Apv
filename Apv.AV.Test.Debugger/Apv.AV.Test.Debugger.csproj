@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Apv.AV.Common\Apv.AV.Common.csproj" />
+    <ProjectReference Include="..\Apv.AV.Services\Apv.AV.Services.csproj" />
+    <ProjectReference Include="..\Apv.AV.Services.Data\Apv.AV.Services.Data.csproj" />
+  </ItemGroup>
+</Project>

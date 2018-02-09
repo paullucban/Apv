@@ -11,9 +11,10 @@ using System;
 namespace Apv.AV.Services.Data.Migrations
 {
     [DbContext(typeof(ApvAppContext))]
-    partial class ApvAppContextModelSnapshot : ModelSnapshot
+    [Migration("20180209081215_UpdateModel1")]
+    partial class UpdateModel1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

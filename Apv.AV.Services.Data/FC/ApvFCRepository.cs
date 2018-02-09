@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Apv.AV.Services.Data.Models.FC;
 using System.Linq;
 //using Apv.AV.Services.Data.FC;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Apv.AV.Common;
 
 namespace Apv.AV.Services.Data.FC
@@ -30,7 +30,10 @@ namespace Apv.AV.Services.Data.FC
 
         public ICollection<CarModel> getCarModels(string countryCode, string companyId, string modelClassId, string carModelId)
         {
-            return _context.CarModels.ToList();
+            return _context
+                .CarModels
+                .Include(c=>c.carModelClass)
+                .ToList();
         }
 
         public ICollection<FinancialProduct> getFinancialProductsByCarModel(string countryCode, string companyId, string carModelId)
