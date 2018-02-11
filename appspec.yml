@@ -19,8 +19,14 @@ hooks:
     - location: scripts/start_server
       timeout: 300
       runas: root
-  Install:
+  AfterInstall:
+    - location: scripts/restore_dotnet
+      timeout: 300
+      runas: root
     - location: scripts/build_dotnet
+      timeout: 300
+      runas: root
+    - location: scripts/build_publish
       timeout: 300
       runas: root
   ApplicationStop:

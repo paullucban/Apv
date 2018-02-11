@@ -1,0 +1,2 @@
+#!/bin/bash
+dotnet restore /home/ec2-user/Apv.AV/Apv.AV.Web/Apv.AV.Web.csproj
