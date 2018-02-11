@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet publish /home/ec2-user/Apv.AV/Apv.AV.Web/Apv.AV.Web.csproj -c release -o /home/ec2-user/Apv.AV/Apv.Web.Published
+dotnet publish /var/Apv.AV/Apv.AV.Web/Apv.AV.Web.csproj -c release -o /var/Apv.AV/Apv.Web.Published

@@ -2,15 +2,15 @@ version: 0.0
 os: linux
 files:
   - source: /Apv.AV.sln
-    destination: /home/ec2-user/Apv.AV/
-  - source: /Apv.AV.Common
-    destination: /home/ec2-user/Apv.AV/Apv.AV.Common/
+    destination: /var/Apv.AV/
+  - source: Apv.AV.Common
+    destination: /var/Apv.AV/Apv.AV.Common/
   - source: Apv.AV.Services.Data
-    destination: /home/ec2-user/Apv.AV/Apv.AV.Services.Data
+    destination: /var/Apv.AV/Apv.AV.Services.Data
   - source: Apv.AV.Services
-    destination: /home/ec2-user/Apv.AV/Apv.AV.Services
+    destination: /var/Apv.AV/Apv.AV.Services
   - source: Apv.AV.Web
-    destination: /home/ec2-user/Apv.AV/Apv.AV.Web
+    destination: /var/Apv.AV/Apv.AV.Web
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies

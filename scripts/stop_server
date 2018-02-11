@@ -1,5 +1,5 @@
 #!/bin/bash
-isExistApp = `pgrep httpd`
-if [[ -n  $isExistApp ]]; then
+isExistApp2 = `pgrep httpd`
+if [[ -n  $isExistApp2 ]]; then
     service httpd stop        
 fi

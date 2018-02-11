@@ -1,3 +1,2 @@
 #!/bin/bash
-cd /home/ec2-user/Apv.AV/Apv.Web.Published/
-dotnet Apv.AV.Web.dll
+cd /var/Apv.AV/Apv.Web.Published/
