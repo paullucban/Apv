@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /index.html
-    destination: /Home/ec2-user/html/
+    destination: /home/ec2-user/Apv.AV/
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
