@@ -3,4 +3,4 @@ isExistApp = `pgrep httpd`
 if [[ -n  $isExistApp ]]; then
     service httpd stop        
 fi
-
+kill $(ps aux | grep 'Apv.AV.Web.dll' | awk '{print $2}')

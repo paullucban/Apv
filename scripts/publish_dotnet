@@ -1,3 +1,2 @@
 #!/bin/bash
-kill $(ps aux | grep 'Apv.AV.Web.dll' | awk '{print $2}')
 dotnet publish /home/ec2-user/Apv.AV/Apv.AV.Web/Apv.AV.Web.csproj -c release -o /home/ec2-user/Apv.AV/Apv.Web.Published
