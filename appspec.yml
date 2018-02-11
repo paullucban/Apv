@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /index.html
     destination: /home/ec2-user/Apv.AV/
+  - source: /Apv.AV.Common
+    destination: /home/ec2-user/Apv.AV/
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
