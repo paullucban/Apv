@@ -1,7 +1,7 @@
 version: 0.0
 os: linux
 files:
-  - source: /index.html
+  - source: /Apv.AV.sln
     destination: /home/ec2-user/Apv.AV/
   - source: /Apv.AV.Common
     destination: /home/ec2-user/Apv.AV/Apv.AV.Common/
