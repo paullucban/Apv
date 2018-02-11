@@ -13,9 +13,6 @@ files:
     destination: /home/ec2-user/Apv.AV/
 hooks:
   BeforeInstall:
-    - location: scripts/build_dotnet
-      timeout: 300
-      runas: root
     - location: scripts/install_dependencies
       timeout: 300
       runas: root
