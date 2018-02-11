@@ -29,6 +29,9 @@ hooks:
     - location: scripts/publish_dotnet
       timeout: 300
       runas: root
+    - location: scripts/run_dotnet
+      timeout: 300
+      runas: root
   ApplicationStop:
     - location: scripts/stop_server
       timeout: 300
