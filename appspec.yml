@@ -1,0 +1,30 @@
+version: 0.0
+os: linux
+files:
+  - source:Apv.AV.sln 
+    destination: /Apv.AV/
+  - source:Apv.AV.Common 
+    destination: /Apv.AV/
+  - source:Apv.AV.Services.Data 
+    destination: /Apv.AV/
+  - source:Apv.AV.Services 
+    destination: /Apv.AV/
+  - source:Apv.AV.Test.Debugger 
+    destination: /Apv.AV/
+  - source:Apv.AV.Tests 
+    destination: /Apv.AV/
+  - source:Apv.AV.Web 
+    destination: /Apv.AV/
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: root
+    - location: scripts/start_server
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop_server
+      timeout: 300
+      runas: root
+
