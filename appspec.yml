@@ -13,14 +13,13 @@ files:
     destination: /home/ec2-user/Apv.AV/Apv.AV.Web
 hooks:
   BeforeInstall:
+    - location: scripts/build_dotnet
+      timeout: 300
+      runas: root
     - location: scripts/install_dependencies
       timeout: 300
       runas: root
     - location: scripts/start_server
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: scripts/build_dotnet
       timeout: 300
       runas: root
   ApplicationStop:
